@@ -1,0 +1,15 @@
+/media/nafis-ahamed/OS/CPS/oop_class_1/oop/bin/Debug/net8.0/oop
+/media/nafis-ahamed/OS/CPS/oop_class_1/oop/bin/Debug/net8.0/oop.deps.json
+/media/nafis-ahamed/OS/CPS/oop_class_1/oop/bin/Debug/net8.0/oop.runtimeconfig.json
+/media/nafis-ahamed/OS/CPS/oop_class_1/oop/bin/Debug/net8.0/oop.dll
+/media/nafis-ahamed/OS/CPS/oop_class_1/oop/bin/Debug/net8.0/oop.pdb
+/media/nafis-ahamed/OS/CPS/oop_class_1/oop/obj/Debug/net8.0/oop.GeneratedMSBuildEditorConfig.editorconfig
+/media/nafis-ahamed/OS/CPS/oop_class_1/oop/obj/Debug/net8.0/oop.AssemblyInfoInputs.cache
+/media/nafis-ahamed/OS/CPS/oop_class_1/oop/obj/Debug/net8.0/oop.AssemblyInfo.cs
+/media/nafis-ahamed/OS/CPS/oop_class_1/oop/obj/Debug/net8.0/oop.csproj.CoreCompileInputs.cache
+/media/nafis-ahamed/OS/CPS/oop_class_1/oop/obj/Debug/net8.0/oop.sourcelink.json
+/media/nafis-ahamed/OS/CPS/oop_class_1/oop/obj/Debug/net8.0/oop.dll
+/media/nafis-ahamed/OS/CPS/oop_class_1/oop/obj/Debug/net8.0/refint/oop.dll
+/media/nafis-ahamed/OS/CPS/oop_class_1/oop/obj/Debug/net8.0/oop.pdb
+/media/nafis-ahamed/OS/CPS/oop_class_1/oop/obj/Debug/net8.0/oop.genruntimeconfig.cache
+/media/nafis-ahamed/OS/CPS/oop_class_1/oop/obj/Debug/net8.0/ref/oop.dll
