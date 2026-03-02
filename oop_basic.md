@@ -113,6 +113,110 @@ class Program
 }
 
 
+
+
+using System;
+
+
+public abstract class Payment
+{
+    public int Amount { get; set; }
+
+
+    public string TransactionId { get; set; }
+
+    public abstract void ValidatePayment();
+
+    public abstract void ProcessPayment();
+
+    // Card validation process payment and bikash validation process payment not same
+
+
+
+    // public void ValidatePayment()
+    // {
+    //     Console.WriteLine("validating payment");
+    // } 
+
+    // public void ProcessPayment()
+    // {
+    //     Console.WriteLine("Processing Payment");
+    // }
+
+    public void ShowInfo()
+    {
+        Console.WriteLine("amount: {0}", Amount);
+        Console.WriteLine("TransactionId: {0}", TransactionId);
+    }
+
+
+
+}
+
+public class CreditCardPayment : Payment
+{
+    public string CardNumber { get; set; }
+
+    public override void ValidatePayment()
+    {
+        Console.WriteLine("Validate Payment By Card");
+    }
+
+    public override void ProcessPayment()
+    {
+        Console.WriteLine("Process Payment By Card");
+    }
+}
+
+public class bikashPayment : Payment
+{
+    public string MobileNumber { get; set; }
+
+    public override void ValidatePayment()
+    {
+        Console.WriteLine("Validate Payment By bikash");
+    }
+
+    public override void ProcessPayment()
+    {
+        Console.WriteLine("Process Payment By bikash");
+    }
+}
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        Payment creditCardPayment = new CreditCardPayment
+        {
+            Amount = 100,
+            TransactionId = "123456",
+            CardNumber = "123456"
+        };
+
+        creditCardPayment.ValidatePayment();
+
+        creditCardPayment.ProcessPayment();
+
+        creditCardPayment.ShowInfo();
+
+
+        Payment bikashPayment = new bikashPayment
+        {
+            Amount = 200,
+            TransactionId = "123456",
+            MobileNumber = "019222"
+        };
+
+        bikashPayment.ValidatePayment();
+
+        bikashPayment.ProcessPayment();
+
+        bikashPayment.ShowInfo();
+    }
+}
+
+
 <!-- sealed  not inherit-->
 
 using System;
@@ -128,5 +232,50 @@ class Program
     static void Main(string[] args)
     {
         
+    }
+}
+
+<!-- interface class thakbei na -->
+
+public interface Payment
+{
+   
+}
+
+<!-- interface and abstract main class same -->
+
+using System;
+
+
+public interface Payment
+{
+   public void Payment();
+   public void PaymentDetails();
+}
+
+public class creditPayment : Payment
+{
+    public void Payment()
+    {
+        Console.WriteLine("Payment Show Info interface");
+    }
+
+    public void PaymentDetails()
+    {
+        Console.WriteLine("Payment Details Info interface");
+    }
+}
+
+// bikash e only show info dekabo
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        Payment payment = new creditPayment();
+
+        payment.PaymentDetails();
+
+        payment.Payment();
     }
 }
