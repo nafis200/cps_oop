@@ -279,3 +279,318 @@ class Program
         payment.Payment();
     }
 }
+
+
+<!-- interface -->
+
+using System;
+
+public interface INotify
+{
+    public void sendMessage();
+
+    public void log();
+
+    public void Save();
+}
+
+public class EmailNotify : INotify
+{
+    public string Email {get; set;}
+
+    public void sendMessage()
+    {
+        Console.WriteLine("Sending Email");
+    }
+
+    public void log()
+    {
+        Console.WriteLine("Log Email");
+    }
+
+    public void Save()
+    {
+        Console.WriteLine("Email Save");
+    }
+}
+
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        INotify emailNotify = new EmailNotify();
+
+        emailNotify.sendMessage();
+    }
+}
+
+
+
+
+<!-- interface and reduced its -->
+
+
+using System;
+
+public interface INotify
+{
+    public void sendMessage();
+
+    public void log();
+
+    public void Save();
+}
+
+public class EmailNotify : INotify
+{
+    public string Email {get; set;}
+
+    public void sendMessage()
+    {
+        Console.WriteLine($"Sending Email to {Email}");
+    }
+
+    public void log()
+    {
+        Console.WriteLine("Log Email");
+    }
+
+    public void Save()
+    {
+        Console.WriteLine("Email Save");
+    }
+}
+
+
+
+public class SmsNotify : INotify
+{
+    public string MobileNumber {get; set;}
+
+    public void sendMessage()
+    {
+        Console.WriteLine($"Sending SMS to {MobileNumber}");
+    }
+
+    public void log()
+    {
+        Console.WriteLine("Log Email");
+    }
+
+    public void Save()
+    {
+        Console.WriteLine("Email Save");
+    }
+}
+
+
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        INotify emailNotify = new EmailNotify{
+            Email = "nafis@gmail.com"
+        };
+
+        emailNotify.sendMessage();
+
+        INotify smsNotify = new SmsNotify{MobileNumber = "01922208141"};
+
+        smsNotify.sendMessage();
+    }
+}
+
+
+<!-- loop through and reduced -->
+
+using System;
+
+public interface INotify
+{
+    public void sendMessage();
+
+    public void log();
+
+    public void Save();
+}
+
+public class EmailNotify : INotify
+{
+    public string Email { get; set; }
+
+    public void sendMessage()
+    {
+        Console.WriteLine($"Sending Email to {Email}");
+    }
+
+    public void log()
+    {
+        Console.WriteLine("Log Email");
+    }
+
+    public void Save()
+    {
+        Console.WriteLine("Email Save");
+    }
+}
+
+
+
+public class SmsNotify : INotify
+{
+    public string MobileNumber { get; set; }
+
+    public void sendMessage()
+    {
+        Console.WriteLine($"Sending SMS to {MobileNumber}");
+    }
+
+    public void log()
+    {
+        Console.WriteLine("Log Email");
+    }
+
+    public void Save()
+    {
+        Console.WriteLine("Email Save");
+    }
+}
+
+
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        IList<INotify> notifies = new List<INotify>{
+            new EmailNotify{Email = "nafis@gmail.com"},
+             new SmsNotify{MobileNumber = "01922208141"}
+        };
+
+        foreach (var notify in notifies)
+        {
+            notify.sendMessage();
+            notify.log();
+            notify.Save();
+        }
+    }
+}
+
+
+<!-- clean and shortcut -->
+
+using System;
+
+public interface INotify
+{
+    public void sendMessage();
+
+    public void log();
+
+    public void Save();
+}
+
+public class EmailNotify : INotify
+{
+    public string Email { get; set; }
+
+    public void sendMessage()
+    {
+        Console.WriteLine($"Sending Email to {Email}");
+    }
+
+    public void log()
+    {
+        Console.WriteLine("Log Email");
+    }
+
+    public void Save()
+    {
+        Console.WriteLine("Email Save");
+    }
+}
+
+
+
+public class SmsNotify : INotify
+{
+    public string MobileNumber { get; set; }
+
+    public void sendMessage()
+    {
+        Console.WriteLine($"Sending SMS to {MobileNumber}");
+    }
+
+    public void log()
+    {
+        Console.WriteLine("Log Email");
+    }
+
+    public void Save()
+    {
+        Console.WriteLine("Email Save");
+    }
+}
+
+public class NotifyContext
+{
+    public INotify notify { get; set; }
+
+    public NotifyContext(INotify notify)
+    {
+        this.notify = notify;
+    }
+
+    public void Process()
+    {
+        notify.sendMessage();
+        notify.log();
+        notify.Save();
+    }
+}
+
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        // IList<INotify> notifies = new List<INotify>{
+        //     new EmailNotify{Email = "nafis@gmail.com"},
+        //      new SmsNotify{MobileNumber = "01922208141"}
+        // };
+
+        // foreach (var notify in notifies)
+        // {
+        //     notify.sendMessage();
+        //     notify.log();
+        //     notify.Save();
+        // }
+
+        IList<NotifyContext> notifies = new List<NotifyContext>();
+
+        EmailNotify emailNotify = new EmailNotify
+        {
+            Email = "nafis@gmail.com"
+        };
+
+
+
+        SmsNotify smsNotify = new SmsNotify { MobileNumber = "01922208141" };
+
+
+        NotifyContext emailNotifyContext = new NotifyContext(emailNotify);
+
+        NotifyContext smsNotifyContext = new NotifyContext(smsNotify);
+
+        notifies.Add(emailNotifyContext);
+        notifies.Add(smsNotifyContext);
+
+        foreach (var item in notifies)
+        { 
+            item.Process();  
+        }
+
+    }
+}
